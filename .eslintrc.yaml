@@ -1,0 +1,10 @@
+root: true
+extends:
+  - remcohaszing
+rules:
+  '@typescript-eslint/ban-types': off
+  '@typescript-eslint/consistent-type-imports':
+    - error
+    - prefer: type-imports
+      disallowTypeAnnotations: false
+      fixStyle: inline-type-imports

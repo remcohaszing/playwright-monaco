@@ -1,0 +1,51 @@
+{
+  "name": "playwright-monaco",
+  "version": "0.0.0",
+  "description": "Test Monaco editor integrations using Playwright",
+  "type": "module",
+  "repository": "remcohaszing/playwright-monaco.git",
+  "author": "Remco Haszing <remcohaszing@gmail.com>",
+  "license": "MIT",
+  "bugs": "https://github.com/remcohaszing/playwright-monaco/issues",
+  "homepage": "https://github.com/remcohaszing/playwright-monaco#readme",
+  "funding": "https://github.com/sponsors/remcohaszing",
+  "engines": {
+    "node": ">=14"
+  },
+  "exports": {
+    ".": {
+      "types": "./index.d.ts",
+      "browser": "./browser/exports.js",
+      "default": "./node/index.js"
+    }
+  },
+  "files": [
+    "{browser,node,shared}/*.{d.ts,js,map}",
+    "www",
+    "index.d.ts"
+  ],
+  "scripts": {
+    "prepack": "tsc --noEmit false",
+    "test": "c8 playwright test"
+  },
+  "keywords": [
+    "monaco",
+    "monaco-editor",
+    "playwright",
+    "test",
+    "testing",
+    "tests"
+  ],
+  "dependencies": {
+    "esbuild": "^0.16.0",
+    "globby": "^13.0.0"
+  },
+  "peerDependencies": {
+    "@playwright/test": "^1.0.0",
+    "monaco-editor": ">=0.33.0"
+  },
+  "devDependencies": {
+    "c8": "^7.0.0",
+    "eslint-config-remcohaszing": "^8.0.0"
+  }
+}
