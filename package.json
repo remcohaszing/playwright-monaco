@@ -10,7 +10,7 @@
   "homepage": "https://github.com/remcohaszing/playwright-monaco#readme",
   "funding": "https://github.com/sponsors/remcohaszing",
   "engines": {
-    "node": ">=14"
+    "node": ">=16"
   },
   "exports": {
     ".": {
