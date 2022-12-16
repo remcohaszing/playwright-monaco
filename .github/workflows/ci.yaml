@@ -43,6 +43,7 @@ jobs:
           node-version: ${{ matrix.node-version }}
       - run: npm install --global npm@latest
         if: ${{ matrix.node-version == 14 }}
+      - run: npx playwright install --with-deps
       - run: npm ci
       - run: npm test
       - uses: codecov/codecov-action@v3
