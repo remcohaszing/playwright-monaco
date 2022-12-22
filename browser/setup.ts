@@ -17,6 +17,7 @@ window.MonacoEnvironment = {
 
 const element = document.getElementById('editor')!
 const ed = monaco.editor.create(element, {
+  automaticLayout: true,
   theme: window.matchMedia('(prefers-color-scheme: dark)').matches ? 'vs-dark' : 'vs-light'
 })
 
