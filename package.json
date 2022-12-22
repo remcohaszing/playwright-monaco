@@ -1,6 +1,6 @@
 {
   "name": "playwright-monaco",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Test Monaco editor integrations using Playwright",
   "type": "module",
   "repository": "remcohaszing/playwright-monaco.git",
