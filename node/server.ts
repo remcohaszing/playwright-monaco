@@ -59,6 +59,7 @@ export async function createServer(
     { port: options.port, servedir },
     {
       bundle: true,
+      conditions: ['worker'],
       entryPoints: allEntryPoints,
       format: 'iife',
       loader: {
