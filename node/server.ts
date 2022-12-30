@@ -56,7 +56,7 @@ export async function createServer(
   }
 
   const result = await serve(
-    { port: options.port, servedir },
+    { port: options.port, servedir, host: '127.0.0.1' },
     {
       bundle: true,
       conditions: ['worker'],
