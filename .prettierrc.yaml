@@ -2,3 +2,7 @@ proseWrap: always
 semi: false
 singleQuote: true
 trailingComma: none
+overrides:
+  - files: .github/workflows/*
+    options:
+      proseWrap: preserve

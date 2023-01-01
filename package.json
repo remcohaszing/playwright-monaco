@@ -26,7 +26,7 @@
   ],
   "scripts": {
     "prepack": "tsc --noEmit false",
-    "test": "c8 playwright test --browser all"
+    "test": "c8 playwright test"
   },
   "keywords": [
     "monaco",
