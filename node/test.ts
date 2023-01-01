@@ -145,7 +145,7 @@ export const test = base.extend<PlaywrightMonacoFixtures>({
         const values = await Promise.all(
           paths.map(async (path) => {
             const absolutePath = join(basedir, path)
-            return [path, await readFile(absolutePath, 'utf8')] as const
+            return [path.replaceAll('\\', '/'), await readFile(absolutePath, 'utf8')] as const
           })
         )
 

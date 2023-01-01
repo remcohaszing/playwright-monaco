@@ -4,7 +4,7 @@
     "declaration": true,
     "declarationMap": true,
     "forceConsistentCasingInFileNames": true,
-    "lib": ["dom", "dom.iterable", "es2020"],
+    "lib": ["dom", "dom.iterable", "es2021"],
     "module": "node16",
     "noEmit": true,
     "paths": {
@@ -12,6 +12,6 @@
     },
     "skipLibCheck": true,
     "strict": true,
-    "target": "es2020"
+    "target": "es2021"
   }
 }
