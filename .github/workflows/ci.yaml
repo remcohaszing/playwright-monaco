@@ -50,7 +50,7 @@ jobs:
       - run: npx playwright install --with-deps
       - run: npm test
       - uses: codecov/codecov-action@v3
-        if: ${{ matrix.node-version == 18 }}
+        if: ${{ matrix.node-version == 18 && matrix.platform == 'ubuntu-latest' }}
 
   prettier:
     runs-on: ubuntu-latest
