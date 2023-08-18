@@ -8,6 +8,34 @@
 Test [Monaco editor](https://microsoft.github.io/monaco-editor) integrations using
 [Playwright](https://playwright.dev).
 
+## Table of Contents
+
+- [Installation](#installation)
+- [Usage](#usage)
+- [API](#api)
+  - [`createServer(entryPoints[, options])`](#createserverentrypoints-options)
+    - [Parameters:](#parameters)
+  - [`monaco`](#monaco)
+  - [`ed`](#ed)
+  - [`test(name, fn)`](#testname-fn)
+  - [`editor` fixture](#editor-fixture)
+    - [`createModel(value[, pathOrUri[, open[, language]]])`](#createmodelvalue-pathoruri-open-language)
+      - [Parameters](#parameters-1)
+      - [Returns](#returns)
+    - [`open(patterns[, options])`](#openpatterns-options)
+      - [Parameters](#parameters-2)
+    - [`setModel(uri)`](#setmodeluri)
+      - [Parameters](#parameters-3)
+    - [`setPosition(position)`](#setpositionposition)
+    - [Parameters](#parameters-4)
+  - [`trigger(handlerId[, payload])`](#triggerhandlerid-payload)
+    - [Parameters](#parameters-5)
+    - [Returns](#returns-1)
+  - [`waitForMarkers(uri, fn)`](#waitformarkersuri-fn)
+    - [Parameters](#parameters-6)
+    - [Returns](#returns-2)
+- [License](#license)
+
 ## Installation
 
 ```sh
@@ -149,7 +177,7 @@ Set the position in the editor
 
 Trigger an editor action.
 
-##### Parameters
+#### Parameters
 
 - `handlerId`: The id of the action to trigger. (`string`)
 - `payload`: An additional payload to send with the action. (`any`)
@@ -171,6 +199,6 @@ Wait for marker data to be triggered for a resource.
 
 Marker data for the uri.
 
-### License
+## License
 
-[MIT](LICENSE.md) @ [Remco Haszing](https://github.com/remcohaszing)
+[MIT](LICENSE.md) © [Remco Haszing](https://github.com/remcohaszing)
