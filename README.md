@@ -22,7 +22,7 @@ best practice makes sure your integration also works with other ways to load Mon
 example many users load Monaco editor from a CDN. The `ed` and `monaco` variables are assigned
 globally for convenience, but you can import them for type safety.
 
-```ts
+```typescript
 // ./tests/setup-monaco.ts
 import { ed, monaco } from 'playwright-monaco'
 
@@ -36,7 +36,7 @@ esbuild [serve](https://esbuild.github.io/api/#serve). This serves a page contai
 configured Monaco editor. All default web workers are configured and a full page editor instance is
 created.
 
-```ts
+```typescript
 // ./playwright.config.ts
 import { type PlaywrightTestConfig } from '@playwright/test'
 import { createServer } from 'playwright-monaco'
@@ -61,7 +61,7 @@ export default config
 Now create a test which uses the `editor` fixture. The `editor` fixture navigates to the page
 served, and contains some convenience functions for working with Monaco editor.
 
-```ts
+```typescript
 // ./tests/integration.spec.ts
 import { test } from 'playwright-monaco'
 

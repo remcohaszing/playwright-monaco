@@ -37,7 +37,7 @@
     "tests"
   ],
   "dependencies": {
-    "esbuild": "^0.16.0",
+    "esbuild": "^0.19.0",
     "globby": "^13.0.0"
   },
   "peerDependencies": {
@@ -45,7 +45,9 @@
     "monaco-editor": ">=0.33.0"
   },
   "devDependencies": {
-    "c8": "^7.0.0",
-    "eslint-config-remcohaszing": "^8.0.0"
+    "c8": "^8.0.0",
+    "eslint": "^8.0.0",
+    "eslint-config-remcohaszing": "^10.0.0",
+    "prettier": "^3.0.0"
   }
 }

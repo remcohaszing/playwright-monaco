@@ -31,6 +31,7 @@ interface ValidationResult {
  */
 export class RegExpReporterWorker {
   #ctx: worker.IWorkerContext
+
   #createData: RegExpReporterWorkerCreateData
 
   constructor(ctx: worker.IWorkerContext, createData: RegExpReporterWorkerCreateData) {

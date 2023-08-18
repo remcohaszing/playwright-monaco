@@ -23,12 +23,16 @@ interface MonacoEditorHelpers {
   /**
    * Create a Monaco editor model.
    *
-   * @param value The value to set.
-   * @param pathOrUri The path or uri of the model. If a path is given, it will be converted to a
-   * file uri.
-   * @param open If set to true, the created model is opened in the editor.
-   * @param language The model language. By default this is auto detected based on the uri.
-   * @returns A Playwright handle for the model.
+   * @param value
+   *   The value to set.
+   * @param pathOrUri
+   *   The path or uri of the model. If a path is given, it will be converted to a file uri.
+   * @param open
+   *   If set to true, the created model is opened in the editor.
+   * @param language
+   *   The model language. By default this is auto detected based on the uri.
+   * @returns
+   *   A Playwright handle for the model.
    */
   createModel: (
     value: string,
@@ -40,9 +44,11 @@ interface MonacoEditorHelpers {
   /**
    * Open a files from the file system in Monaco editor.
    *
-   * @param patterns A glob pattern or array of glob patterns to open in the editor.
-   * @param options Options to pass to globby. The `cwd` option is also used to determine the base
-   * path of the
+   * @param patterns
+   *   A glob pattern or array of glob patterns to open in the editor.
+   * @param options
+   *   Options to pass to globby. The `cwd` option is also used to determine the base path of the
+   *   file.
    */
   open: (
     patterns: string[] | string,
@@ -55,32 +61,40 @@ interface MonacoEditorHelpers {
   /**
    * Open an existing model in the editor.
    *
-   * @param uri The uri of the model to open.
+   * @param uri
+   *   The uri of the model to open.
    */
   setModel: (uri: string) => Promise<void>
 
   /**
    * Set the position in the editor.
    *
-   * @param position The position to set.
+   * @param position
+   *   The position to set.
    */
   setPosition: (position: IPosition) => Promise<void>
 
   /**
    * Trigger an editor action.
    *
-   * @param handlerId The id of the action to trigger.
-   * @param payload An additional payload to send with the action.
-   * @returns The result of the action.
+   * @param handlerId
+   *   The id of the action to trigger.
+   * @param payload
+   *   An additional payload to send with the action.
+   * @returns
+   *   The result of the action.
    */
   trigger: (handlerId: string, payload?: unknown) => Promise<unknown>
 
   /**
    * Wait for marker data to be triggered for a resource.
    *
-   * @param uri The resource uri to wait for markers for.
-   * @param fn A function to evaluate to trigger marker data.
-   * @returns Marker data for the uri.
+   * @param uri
+   *   The resource uri to wait for markers for.
+   * @param fn
+   *   A function to evaluate to trigger marker data.
+   * @returns
+   *   Marker data for the uri.
    */
   waitForMarkers: (uri: string, fn: () => Promise<void>) => Promise<SerializedMarker[]>
 }
@@ -127,6 +141,7 @@ export const test = base.extend<PlaywrightMonacoFixtures>({
             }
             return model
           },
+
           /* c8 ignore stop */
           [value, path, language, open] as const
         )
@@ -155,6 +170,7 @@ export const test = base.extend<PlaywrightMonacoFixtures>({
           for (const [path, value] of entries) {
             monaco.editor.createModel(value, undefined, monaco.Uri.joinPath(root, path))
           }
+
           /* c8 ignore stop */
         }, values)
       },
@@ -172,12 +188,10 @@ export const test = base.extend<PlaywrightMonacoFixtures>({
         }, position),
 
       trigger: (...args) =>
-        handle.evaluate(
-          ({ ed }, [handlerId, payload]) =>
-            /* c8 ignore next */
-            ed.trigger('monaco-playwright', handlerId, payload),
-          args
-        ),
+        handle.evaluate(({ ed }, [handlerId, payload]) => {
+          /* c8 ignore next */
+          ed.trigger('monaco-playwright', handlerId, payload)
+        }, args),
 
       async waitForMarkers(uri, fn) {
         const markerPromise = handle.evaluate(({ monaco }, uriString) => {
@@ -219,6 +233,7 @@ export const test = base.extend<PlaywrightMonacoFixtures>({
               }
             })
           })
+
           /* c8 ignore stop */
         }, uri)
         await fn()
