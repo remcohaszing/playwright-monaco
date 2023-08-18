@@ -1,8 +1,8 @@
 # playwright-monaco
 
 [![github actions](https://github.com/remcohaszing/playwright-monaco/actions/workflows/ci.yaml/badge.svg)](https://github.com/remcohaszing/playwright-monaco/actions/workflows/ci.yaml)
-[![npm](https://img.shields.io/npm/v/playwright-monaco)](https://www.npmjs.com/package/playwright-monaco)
-[![prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg)](https://prettier.io)
+[![npm version](https://img.shields.io/npm/v/playwright-monaco)](https://www.npmjs.com/package/playwright-monaco)
+[![npm downloads](https://img.shields.io/npm/dm/playwright-monaco)](https://www.npmjs.com/package/playwright-monaco)
 [![codecov](https://codecov.io/gh/remcohaszing/playwright-monaco/branch/main/graph/badge.svg)](https://codecov.io/gh/remcohaszing/playwright-monaco)
 
 Test [Monaco editor](https://microsoft.github.io/monaco-editor) integrations using
