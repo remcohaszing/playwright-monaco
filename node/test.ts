@@ -1,6 +1,6 @@
 import { readFile } from 'node:fs/promises'
 import { join } from 'node:path'
-import { fileURLToPath, pathToFileURL } from 'node:url'
+import { fileURLToPath } from 'node:url'
 
 import { test as base, type JSHandle } from '@playwright/test'
 import { globby, type Options as GlobbyOptions } from 'globby'
@@ -122,9 +122,11 @@ export const test = base.extend<PlaywrightMonacoFixtures>({
             path = String(pathOrUri)
           } else {
             try {
-              fileURLToPath(pathOrUri)
+              // TODO [engine:node@>=24]: Use URL.canParse()
+              // eslint-disable-next-line no-new
+              new URL(pathOrUri)
             } catch {
-              path = String(pathToFileURL(pathOrUri))
+              path = `file://${pathOrUri}`
             }
             if (!path) {
               path = pathOrUri
