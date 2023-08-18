@@ -1,9 +1,12 @@
+import { rm } from 'node:fs/promises'
 import { fileURLToPath } from 'node:url'
 
 import { context } from 'esbuild'
+import findCacheDir from 'find-cache-dir'
 import metadata from 'monaco-editor/esm/metadata.js'
 
-const servedir = fileURLToPath(new URL('../www', import.meta.url))
+const outdir = findCacheDir({ name: 'playwright-monaco' })
+const htmlEntryPoint = fileURLToPath(new URL('../www/index.html', import.meta.url))
 const monacoEntryPoint = fileURLToPath(new URL('../browser/setup', import.meta.url))
 
 interface EntryPointRecord extends Record<string, string> {
@@ -35,6 +38,13 @@ export async function createServer(
   entryPoints: EntryPointRecord | string,
   options: ServerOptions = {}
 ): Promise<string> {
+  /* c8 ignore start */
+  if (!outdir) {
+    throw new Error('Could not find cache directory')
+  }
+
+  /* c8 ignore end */
+
   const allEntryPoints: Record<string, string> = Object.create(null)
 
   for (const language of metadata.languages) {
@@ -44,6 +54,7 @@ export async function createServer(
   }
 
   allEntryPoints['monaco-editor'] = monacoEntryPoint
+  allEntryPoints.index = htmlEntryPoint
   allEntryPoints.editorWorkerService = 'monaco-editor/esm/vs/editor/editor.worker.js'
 
   /* c8 ignore start */
@@ -59,17 +70,20 @@ export async function createServer(
     throw new Error('Missing setup entry point')
   }
 
+  await rm(outdir, { force: true, recursive: true })
   const ctx = await context({
     bundle: true,
     conditions: ['worker'],
+    outdir,
     entryPoints: allEntryPoints,
     format: 'iife',
     loader: {
+      '.html': 'copy',
       '.ttf': 'file'
     }
   })
 
-  const result = await ctx.serve({ port: options.port, servedir, host: '127.0.0.1' })
+  const result = await ctx.serve({ port: options.port, servedir: outdir, host: '127.0.0.1' })
 
   return `http://${result.host}:${result.port}`
 }
