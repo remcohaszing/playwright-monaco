@@ -16,7 +16,14 @@ interface EntryPointRecord extends Record<string, string> {
   setup: string
 }
 
-interface ServerOptions {
+export interface CreateServerOptions {
+  /**
+   * Substitute packages with an alternative.
+   *
+   * @see https://esbuild.github.io/api/#alias
+   */
+  alias?: Record<string, string>
+
   /**
    * If specified, use this port. By default a free port will be used.
    */
@@ -36,7 +43,7 @@ interface ServerOptions {
  */
 export async function createServer(
   entryPoints: EntryPointRecord | string,
-  options: ServerOptions = {}
+  options: CreateServerOptions = {}
 ): Promise<string> {
   /* c8 ignore start */
   if (!outdir) {
@@ -72,6 +79,7 @@ export async function createServer(
 
   await rm(outdir, { force: true, recursive: true })
   const ctx = await context({
+    alias: options.alias,
     bundle: true,
     conditions: ['worker'],
     outdir,

@@ -109,6 +109,7 @@ Create an esbuild dev server which serves Monaco editor.
 - `entryPoints`: A string or object that contains the `setup` key. These entry points will be built
   and loaded using esbuild.
 - `options`: Optional additional configuration options. The following options are accepted:
+  - `alias`: Substitute packages with an alternative.
   - `port`: The port on which to serve the page.
 
 ### `monaco`
