@@ -9,9 +9,6 @@
   "bugs": "https://github.com/remcohaszing/playwright-monaco/issues",
   "homepage": "https://github.com/remcohaszing/playwright-monaco#readme",
   "funding": "https://github.com/sponsors/remcohaszing",
-  "engines": {
-    "node": ">=16"
-  },
   "exports": {
     ".": {
       "types": "./index.d.ts",
