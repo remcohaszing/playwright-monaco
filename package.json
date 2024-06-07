@@ -36,7 +36,7 @@
     "tests"
   ],
   "dependencies": {
-    "esbuild": "^0.19.0",
+    "esbuild": "^0.21.0",
     "find-cache-dir": "^5.0.0",
     "globby": "^14.0.0"
   },
