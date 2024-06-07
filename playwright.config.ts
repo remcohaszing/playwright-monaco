@@ -1,6 +1,5 @@
 import { type PlaywrightTestConfig } from '@playwright/test'
-
-import { createServer } from './node/index.js'
+import { createServer } from 'playwright-monaco'
 
 const config: PlaywrightTestConfig = {
   expect: { timeout: 10_000 },

@@ -9,20 +9,22 @@
   "bugs": "https://github.com/remcohaszing/playwright-monaco/issues",
   "homepage": "https://github.com/remcohaszing/playwright-monaco#readme",
   "funding": "https://github.com/sponsors/remcohaszing",
+  "types": "./dist/playwright-monaco.d.ts",
   "exports": {
     ".": {
-      "types": "./index.d.ts",
-      "browser": "./browser/exports.js",
-      "default": "./node/index.js"
+      "types": "./dist/playwright-monaco.d.ts",
+      "browser": "./dist/browser/exports.js",
+      "default": "./dist/node/index.js"
     }
   },
   "files": [
-    "{browser,node,shared}/*.{d.ts,js,map}",
-    "www",
-    "index.d.ts"
+    "dist",
+    "src",
+    "www"
   ],
   "scripts": {
-    "prepack": "tsc --noEmit false",
+    "prepack": "tsc --build",
+    "pretest": "tsc --build",
     "test": "c8 playwright test"
   },
   "keywords": [

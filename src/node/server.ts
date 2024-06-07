@@ -6,9 +6,9 @@ import findCacheDir from 'find-cache-dir'
 import metadata from 'monaco-editor/esm/metadata.js'
 
 const outdir = findCacheDir({ name: 'playwright-monaco' })
-const iconEntryPoint = fileURLToPath(new URL('../www/icon.svg', import.meta.url))
-const indexEntryPoint = fileURLToPath(new URL('../www/index.html', import.meta.url))
-const monacoEntryPoint = fileURLToPath(new URL('../browser/setup', import.meta.url))
+const iconEntryPoint = fileURLToPath(new URL('../../www/icon.svg', import.meta.url))
+const indexEntryPoint = fileURLToPath(new URL('../../www/index.html', import.meta.url))
+const monacoEntryPoint = fileURLToPath(new URL('../browser/setup.js', import.meta.url))
 
 interface EntryPointRecord extends Record<string, string> {
   /**
